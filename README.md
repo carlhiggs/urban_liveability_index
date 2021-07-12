@@ -4,7 +4,7 @@
 
 This repository contains the code used for creation of the pilot- and 15-indicator revised versions of the Urban Liveability Index for Melbourne, 2012.
 
-The code was authored and run in 2016-18, and formed the basis of subsequent code used for analysis for the Australian National Liveability projects (capital cities in 2017; 21 cities in 2018-19).
+The code was authored and run in 2016-18, and formed the basis of subsequent code used for analysis for the Australian National Liveability projects (capital cities in 2017; 21 cities in 2018-19) and related projects.
 
 This project assumes the following:
 
