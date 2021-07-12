@@ -1,8 +1,6 @@
-# Pilot Liveability Index project repository #
+# Urban Liveability Index
 
-### Liveability Index indicator calculation ###
-
-This repository contains the code used for creation of the pilot- and 15-indicator revised versions of the Urban Liveability Index for Melbourne, 2012.
+This repository contains the code used for creation of the pilot- and 15-indicator revised versions of the spatial Urban Liveability Index for Melbourne, 2012.
 
 The code was authored and run in 2016-18, and formed the basis of subsequent code used for analysis for the Australian National Liveability projects (capital cities in 2017; 21 cities in 2018-19) and related projects.  The code is run as a sequential series of scripts, or manual steps (as per directions in plain text) using Python 2.7 in conjunction with the ArcGIS arcpy library, and PostgreSQL with PostGIS.  Most of the scripts relate to address level built environment analyses conducted in preparation of component indicators included in the Urban Liveability Index.
 
