@@ -1,0 +1,31 @@
+#ABS/ABS_downloads/
+
+## Custom ABS tables
+### Cleaning: need to remove header and comments at bottom of files and store in ABS_derived folder
+
+## ABS 2011 Meshblock dwellings count
+### Cleaning: need to remove comments at bottom of csv file and store in ABS_derived folder
+
+## ABS/original_domain_analysis_data
+The Victorian project made use of some previously analysed data; a copy of this and appropriate references was made here; and derived versions customised for project purposes were stored in the ABS_derived folder.
+
+## ABS/ABS_derived
+After cleaning the download files listed above, the derived directory should more or less correspond to the following.  The text files accompanying csv tables indicate source of derived data, and any relevant comments which were excerpted in order for data to be processed (e.g. that individual cell frequencies may have small random offset for anonymisation purposes):
+
+Derived from ABS_downloads:
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_Adult18up_Employment.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_Adult18up_Employment.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_CarOwnership.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_CarOwnership.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_MethodOfTravelToWorkPlace.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_MethodOfTravelToWorkPlace.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA3_UsualResidence_by_PlaceOfWork.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA3_UsualResidence_by_PlaceOfWork.csv.txt
+
+Derived from previous analysis source files:
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_30-40AffordableHousing.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_30-40AffordableHousing.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_OwnerOccupiedTORentalHousing.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_OwnerOccupiedTORentalHousing.csv.txt
+
+Additional files may be added to this directory as a result of processing (e.g. for liveworksameSA3, which is derived from UsualResidence_by_PlaceOfWork.csv) and so are not expected to exist at this point.

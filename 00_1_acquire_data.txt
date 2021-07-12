@@ -1,0 +1,144 @@
+# 1. Overall project structure
+
+The region-specific liveability index files and documentation will lie within a project directory (say, 'D:/vic_metrourban_li').
+
+Within this project directory are the folders:
+
+admin
+data
+liveability_calculation
+li_analysis
+
+
+The 'admin' folder contains the project documentation (meeting notes, literature searches, etc)
+
+The 'data' folder contains raw and derived data sources, as well as the project intermediary data files and back up of current SQL database.  The current document concerns the structure of this directory.
+
+The 'liveability_calculation' folder contains the scripts required to create the project database and associated indicators / composite index, along with directions for workflow to create these.  The scripts and directions are indexed in the order in which they should be completed within the 'process' sub-folder, commencing with the current file which explains how to structure the folders for ensuing processes.
+
+The 'li_analysis' folder contains scripts for analyses of the completed composite index and result output, as well as map and network visualisations, and the project document report. 
+
+
+# 2. Data folder structure
+
+The 'data' folder for the should contain the following folders and subfolders:
+
+ABS
+  -- ABS_derived
+       -- geojson                      <<<< Created in R in the analysis stage
+  -- ABS_downloads
+       -- shape_files
+  -- original_domain_analysis_data     <<<< for Vic
+  -- TableBuilder custom groups
+outcomes
+  -- VH
+  -- Vista
+POS
+Roads
+VicMap_address_2013
+
+in addition, it also contains the following geodatabase:
+
+Destinations.gdb
+
+Table builder custom groups are group template files created by the author to facilitate export of ABS data using the ABS Table Builder web interface.
+
+
+# 2a.  ABS/ABS_downloads/shapefiles
+At the time of preparation, shape file boundary features were sourced from the ABS for the project reference period of 2011 (to be stored in named sub-folder w/in 'ABS_downloads/shapefiles'):
+
+## ABS Australian Statistical Geography Standard (ASGS) features, Jul7 2011
+
+1259030001_sd11aaust_shape.zip
+1270055001_mb_2011_vic_shape.zip
+1270055001_sa1_2016_aust_shape.zip
+1270055001_sa3_2011_aust_shape.zip
+
+downloaded from http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument
+and extracted to folder with same name as zip file.
+
+## Non ABS Structures, July 2011  
+
+1270055001_ste_2011_aust_shape.zip
+1270055003_lga_2011_aust_shape.zip
+1270055003_ssc_2011_aust_shape.zip
+1270055004_sos_2011_aust_shape.zip
+
+downloaded from http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.003July%202011?OpenDocument
+and extracted to folder with same name as zip file.
+
+# 2b. ABS/ABS_downloads/
+
+## Custom ABS tables
+These must be constructed online at
+https://www.censusdata.abs.gov.au/webapi/jsf/login.xhtml
+Make use of the table builder custom groups which have been defined and saved to 'ABS/TableBuilder custom groups'
+
+2011 Melb SA1 MTWP - ActivePublicPrivate.csv
+2011 Melb SA3 UsualResidence by PlaceOfWork.csv
+2011 Melb SA1 Adult Employment.csv
+2011 Melb SA1 Car Ownership.csv
+
+### Cleaning: need to remove header and comments at bottom of files and store in ABS_derived folder
+
+## ABS 2011 Meshblock dwellings count
+Sourced from:
+http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2074.02011?OpenDocument
+### Cleaning: need to remove comments at bottom of csv file and store in ABS_derived folder
+
+# 2c. ABS/original_domain_analysis_data
+The Victorian project made use of some previously analysed data; a copy of this and appropriate references was made here; and derived versions customised for project purposes were stored in the ABS_derived folder.
+
+### 2d. ABS/ABS_derived
+After cleaning the download files listed above, the derived directory should more or less correspond to the following.  The text files accompanying csv tables indicate source of derived data, and any relevant comments which were excerpted in order for data to be processed (e.g. that individual cell frequencies may have small random offset for anonymisation purposes):
+
+Derived from ABS_downloads:
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_Adult18up_Employment.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_Adult18up_Employment.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_CarOwnership.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_CarOwnership.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_MethodOfTravelToWorkPlace.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA1_MethodOfTravelToWorkPlace.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA3_UsualResidence_by_PlaceOfWork.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_2011_Melb_SA3_UsualResidence_by_PlaceOfWork.csv.txt
+
+Derived from previous analysis source files:
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_30-40AffordableHousing.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_30-40AffordableHousing.csv.txt
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_OwnerOccupiedTORentalHousing.csv
+D:\li_pilot\data\ABS\ABS_derived\ABS_HB_RR_2011_AUS_SA1_OwnerOccupiedTORentalHousing.csv.txt
+
+Additional files may be added to this directory as a result of processing (e.g. for liveworksameSA3, which is derived from UsualResidence_by_PlaceOfWork.csv) and so are not expected to exist at this point.
+
+# 2e. Destinations.gdb
+This is a geodatabase of destination types, which unfortunately I cannot re-locate the original source of on the RMIT shared drive.  It is approx 61mb in size.  Whilst it is national in intent, the best coverage is for Victoria (e.g. only contains Victorian supermarkets).  For national data, consider the geodatabase ntnl_liveability.gdb
+
+Most importantly Destinations.gdb contains locations for the following destinations which are recompiled to a new study region specific geodatabase and drawn upon for indicator calculation:
+destinationList = ['CommunityCentre','MuseumArtGallery','CinemaTheatre','Libraries_2014','ChildcareOutOfSchool','Childcare','StateSecondarySchools','StatePrimarySchools','TAFEcampuses','u3a2012','UniversityMainCampuses2014','AgedCare_2012','CommunityHealthCentres','Dentists','GP_Clinics','MaternalChildHealth','SwimmingPools','Sport','Supermarkets','ConvenienceStores','PetrolStations','Newsagents','FishMeatPoultryShops','FruitVegeShops','Pharmacy','PostOffice','BanksFinance','BusStop2012','TramStops2012','TrainStations2012','CBD'] 
+
+# 2f. POS
+POS data acquired from previous work R:\5050\CHE\CIV\Data\VEAC  .  This contains park-indexed nodes derived from and following the path of the original POS feature's polygon boundary.
+
+the VEACOS_50mvertices.shp shape file contains all the requisite data for analysis.
+
+		- VEAC_ID: park ID (String 10)
+		- OBJECTID: individual park entry point identifier (long 9)
+		- OS_GROUP: categorisation of POS
+		- Ha  --- size of POS in hectares
+
+# 2g. Roads
+## CLEAN_Roads_2013.gdb
+## CleanRdsWithFreeways.shp
+'Clean Roads' geodatabase ('pedestrianised') and freeways shape file sourced from previous work by Rebecca Roberts et al at
+R:\5050\CHE\CIV\Projects\Liveability\Roads
+
+## IntersectionWith3Legs.shp
+Intersections copied from shape file calculated by Rebecca Roberts at
+R:\5050\CHE\CIV\Projects\Liveability\Domain_Walkability\Data\IntersectionWith3Legs.shp
+
+# 2h. PSMA_2012_Nov    
+PSMA GNAF address points sourced from K:\RESEARCH\GIS\Data\PSMA_2012_Nov
+GNAF_VIC_point.shp
+
+At project commencement, the intent was to use VicMap 2013 address points.  However, as the project commenced and was generalised to use the national G-NAF address database it was decided (definitively, on 9 March 2017) that this source was more appropriate.
+
