@@ -38,7 +38,7 @@ This project assumes the following:
 
 In addition input source data are required; file locations may be configured as part of the code configuration process.
 
-Carl Higgs
+Analysis code are located at https://bitbucket.org/Koen_Simons/liveability_vista (pilot ULI), and https://bitbucket.org/Koen_Simons/liveability_vphs (revised ULI).
 
 ### Contributors ###
 
