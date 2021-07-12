@@ -4,7 +4,11 @@
 
 This repository contains the code used for creation of the pilot- and 15-indicator revised versions of the Urban Liveability Index for Melbourne, 2012.
 
-The code was authored and run in 2016-18, and formed the basis of subsequent code used for analysis for the Australian National Liveability projects (capital cities in 2017; 21 cities in 2018-19) and related projects.
+The code was authored and run in 2016-18, and formed the basis of subsequent code used for analysis for the Australian National Liveability projects (capital cities in 2017; 21 cities in 2018-19) and related projects.  The code is run as a sequential series of scripts, or manual steps (as per directions in plain text) using Python 2.7 in conjunction with the ArcGIS arcpy library, and PostgreSQL with PostGIS.  Most of the scripts relate to address level built environment analyses conducted in preparation of component indicators included in the Urban Liveability Index.
+
+Code used for the calculation of the pilot Urban Liveability Index is contained in `.\code\34a_parcel-based_LiveabilityCI_pilot_ULI.py`.  This relates to the methods published as: Higgs, C., Badland, H., Simons, K. and Giles-Corti, B. The Urban Liveability Index: developing a policy-relevant urban liveability composite measure and evaluating associations with transport mode choice. Int J Health Geogr 18, 14 (2019). https://doi.org/10.1186/s12942-019-0178-8
+
+The code for the revised Urban Liveability Index calculation is contained in `.\code\34b_parcel-based_LiveabilityCI_ULI_v2_i15.py`.  This was used to create the 15 indicator revised version as used in a linkage analysis of Victorian Population Health Survey participants, in a paper submitted to npj Urban Sustainability for review: Higgs, C., Badland, H., Simons, K. and Giles-Corti, B. Urban liveability and adult cardiometabolic health: policy-relevant evidence from a cross-sectional Australian built environment data linkage study. npj Urban Sustainability (2021; submitted for review).
 
 This project assumes the following:
 
@@ -32,8 +36,9 @@ This project assumes the following:
 - Install config parser
  -- while you have the console window above still open, type 'pip install ConfigParser'
 
-Carl Higgs
+In addition input source data are required; file locations may be configured as part of the code configuration process.
 
+Carl Higgs
 
 ### Contributors ###
 
